@@ -7,13 +7,12 @@ public class HomePage {
 	private WebDriver driver;
 
 	public HomePage(FirefoxDriver driver) {
-		this.driver = driver;
-		
+		this.driver = driver;		
 	}
 
-	public ResultPage search(String string) {
-		driver.findElement(By.xpath("")),sendKeys(arg0);		
-		return new ResultPage();
+	public ResultPage search(String text) {
+		driver.findElement(By.xpath(".//*[@id='sb_ifc0']")).sendKeys(text);		
+		return new ResultPage(driver);
 	}
 
 }
