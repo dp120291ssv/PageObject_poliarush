@@ -1,10 +1,14 @@
+import static org.junit.Assert.*;
+
+import org.junit.Test;
 
 public class GoogleTestPage {
 	
 	@Test
-	public static void(){
-		HomePage home = new HomePage();
-		home.search(automated testing info);
+	public void testSearch(){
+		HomePage home = new HomePage();		
+		ResultPage result = home.search("automated testing info");
+		assertTrue(result.getFirstLink().contains("automated"));
 	}
 
 }
