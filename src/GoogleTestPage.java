@@ -1,32 +1,31 @@
-import static org.junit.Assert.*;
 
 import java.util.concurrent.TimeUnit;
+import org.testng.Assert;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
 public class GoogleTestPage {
 	private FirefoxDriver driver;
 	
-	@Before
+	@BeforeTest
 	public void setUp(){
 		driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.get("http://google.com.ua");
 	}
 	
-	@After
+	@AfterTest
 	public void tearDown(){		
 		driver.close();
 	}
-	
 	@Test
 	public void testSearch(){
 		HomePage home = new HomePage(driver);		
 		ResultPage result = home.search("automated testing info");
-		assertTrue(result.getFirstLink().contains("automated"));
+		Assert.assertTrue(result.getFirstLink().contains("automated"));
 	}
 
 }
